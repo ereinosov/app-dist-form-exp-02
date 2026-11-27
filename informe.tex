@@ -1,0 +1,75 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+\title{GA-EXP-02 -- FORM: Coevaluación de exposiciones\\
+\large Aplicaciones Distribuidas (ISR-701), SPA 2026--2027}
+\author{Eduardo Reinoso Vélez}
+\date{26 de noviembre de 2026}
+
+\begin{document}
+\maketitle
+
+\section{Equipo evaluado: GGHL -- T7 Computación paralela}
+
+\subsection*{Bloque 1. Identificación}
+\begin{tabular}{@{}p{4.2cm}p{11cm}@{}}
+Evaluador & Eduardo Reinoso Vélez \\
+Equipo del evaluador & Grupo 2 (LMRT) -- RPC, gRPC y RMI (T1, T2 y T3) \\
+Equipo evaluado & GGHL (Diego Giraldo, Roger García, Bryan Lombeida; Herrera no asistió) \\
+Tema & T7. Computación paralela \\
+Fecha y horas & 26/11/2026, inicio 08:30, fin 09:00 (30 min); el docente no fijó un tiempo T \\
+\end{tabular}
+
+\subsection*{Bloque 2. Niveles y evidencias}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.9cm}p{1.1cm}p{13.2cm}@{}}
+\toprule
+Dim. & Nivel & Evidencia observada \\
+\midrule
+D1 & 3 &
+Hubo demostración en vivo (Diego, simulación de la RTV con Apache Spark), explicación de conceptos (Spark y clúster; CAP y PACELC; tolerancia a fallos) y aplicación a proyectos propios (CLAB, SGRA). Diego mencionó una comparativa que no alcancé a registrar; por eso falta un elemento menor y no asigno 4. \\
+D2 & 2 &
+Diego explicó las formas secuencial, paralela y distribuida y el clúster como gestor de recursos; Roger explicó CAP y PACELC; Bryan explicó la tolerancia a fallos y sus tipos. No registré cuáles conceptos de la ficha T7 (Amdahl, speedup, eficiencia, condiciones de carrera, memoria compartida o distribuida) se explicaron, ni errores de la lista; con duda entre dos niveles asigno el inferior. \\
+D3 & 3 &
+Diego mostró los requisitos (Python, Java Temurin 21, Apache Spark), recorrió el código de la simulación de vehículos de la RTV y lo ejecutó en vivo con varios procesos simulados. Mostró que el tiempo varía entre ejecuciones, la interfaz de Spark y el Timeline de eventos. Caso de límite: con 5 particiones y 4 datos la primera partición queda vacía y el tiempo aumenta (se vieron valores numéricos). Bryan ejecutó un script de Python con tres flujos (secuencial, paralelo y paralelo con recuperación ante fallo simulado). No registré los criterios de la comparación, por eso no asigno 4. \\
+D4 & 3 &
+Roger relacionó CAP y PACELC con la disponibilidad de laboratorios (CLAB), presentó dos enfoques con PostgreSQL para evitar el solapamiento de reservas y planteó añadir réplicas solo si la carga lo justifica. Diego expuso limitaciones con datos simulados (tiempo variable, partición vacía) y Bryan lo aplicó a SGRA. No registré con detalle las razones de cuándo usar y cuándo no usar, por eso no asigno 4. \\
+D5 & 1 &
+(a) Sin lectura abusiva; usaron las diapositivas como apoyo en ciertas ocasiones. (b) Duraron 30 min (08:30 a 09:00) y el docente no fijó T. (c) No hubo preguntas, por lo que no se pudo observar. (d) Diapositivas legibles en la transmisión por Google Meet propuesta por el docente. (e) Expusieron Diego Giraldo, Roger García y Bryan Lombeida; Herrera no asistió y no expuso. Asigno 1 por el descriptor ``un integrante no expone''. \\
+D6 & 3 &
+La diapositiva final tenía 7 referencias numeradas con autor o entidad, título, fecha y DOI o URL: tres de documentación oficial de Apache Spark [2], [3], [5]; tres artículos de revistas indexadas [4], [6], [7]; y un libro de Springer [1]. No confirmé que cada dato o figura llevara su fuente en su propia diapositiva, por eso no asigno 4. \\
+\bottomrule
+\end{tabular}
+
+\subsection*{Bloque 3. Nota sugerida}
+\begin{align*}
+\text{Nota sugerida} &= \frac{10\cdot3 + 20\cdot2 + 15\cdot3 + 20\cdot3 + 25\cdot1 + 10\cdot3}{4}\times 0{,}1\\[4pt]
+&= \frac{30+40+45+60+25+30}{4}\times 0{,}1 = \frac{230}{4}\times 0{,}1 = 5{,}75 \approx \mathbf{5{,}8}
+\end{align*}
+
+\subsection*{Bloque 4. Retroalimentación}
+\textbf{Fortaleza.} Diego mostró en vivo, con la interfaz de Spark y el Timeline, que con 5 particiones y 4 datos la primera partición queda vacía y el tiempo aumenta, lo que hizo visible el costo de particionar de más.
+
+\textbf{Mejora.} En mi registro, la parte de Roger sobre CAP, PACELC y los dos enfoques con PostgreSQL se presentó con diapositivas y sin una ejecución. Agregar una práctica corta que muestre el solapamiento de reservas y cómo lo evita cada enfoque, con resultados visibles, la dejaría al nivel de la demostración de Diego.
+
+\section*{Anexo. Transcripción ordenada de mis notas de campo}
+Versión redactada y con ortografía corregida de mis notas tomadas durante la sesión. La evidencia original, sin alterar, está en la carpeta \texttt{hojas\_campo/}.
+
+\textbf{Diego Giraldo, computación paralela.} Explicó las formas secuencial, paralela y distribuida, y su relación con Apache Spark, donde el clúster gestiona los recursos. Presentó una práctica sobre la RTV: una simulación en Python con Apache Spark. Mostró los requisitos de instalación (Python, Java Temurin 21 y Apache Spark) y recorrió paso a paso la estructura del código, que simula datos de vehículos y el procesamiento del resultado de la revisión. Ejecutó el ejemplo y mostró que el tiempo de procesamiento varía entre ejecuciones. Enseñó la interfaz de Spark y la línea de tiempo de eventos (Timeline). También mostró que con más particiones que datos (5 particiones y 4 datos) la primera partición queda vacía y el tiempo aumenta.
+
+\textbf{Roger García.} Presentó y explicó el teorema CAP y también PACELC, y los relacionó con el proyecto de disponibilidad de laboratorios. Presentó dos enfoques con PostgreSQL para evitar el solapamiento de reservas y planteó añadir réplicas a CLAB solo si la carga lo justifica.
+
+\textbf{Bryan Lombeida.} Explicó la tolerancia a fallos y sus tipos, y la aplicó a su proyecto SGRA con un script de Python que simula tres flujos: secuencial, paralelo y paralelo con recuperación.
+
+\section*{Declaración de uso de inteligencia artificial}
+Las observaciones y los niveles son los que anoté a mano durante la sesión y las que confirmé al responder preguntas puntuales. Usé Claude (Anthropic) para corregir la ortografía de mis anotaciones, ordenarlas en el formato de la guía, redactar el código \LaTeX{} y revisar la cuenta de la nota sugerida. Revisé cada afirmación contra mis notas y la hoja de campo.
+
+\end{document}
